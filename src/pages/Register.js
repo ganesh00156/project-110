@@ -105,18 +105,7 @@ const Register = () => {
                         {err && <Alert severity="error">{err}</Alert>}
                       </Stack>
                     </Grid>
-                    {/* <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  onChange={handleChange}
-                />
-              </Grid> */}
+
                     <Grid item xs={12}>
                       <FormControl sx={{ width: "100%" }} variant="outlined">
                         <InputLabel htmlFor="outlined-adornment-password">
@@ -154,7 +143,7 @@ const Register = () => {
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
-                    onClick={handleSubmit}
+                    onClick={inputs.password ? handleSubmit : ""}
                     disabled={inputs.email === ""}
                   >
                     Sign Up

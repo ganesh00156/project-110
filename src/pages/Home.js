@@ -53,11 +53,6 @@ export default function DataTableTest() {
       }
     };
     getdata();
-
-    // axios.get(baseURL).then((response) => {
-    //   const rd = response.data.filter((item) => currentUser.id === item.uid);
-    //   setRows(rd);
-    // });
   }, [currentUser]);
 
   const handleChangePage = (event, newPage) => {
@@ -121,7 +116,6 @@ export default function DataTableTest() {
     return 0;
   });
 
-  
   return (
     <>
       {currentUser ? (
@@ -135,7 +129,6 @@ export default function DataTableTest() {
                   alignItems: "center",
                 }}
               >
-                {/* <input type="text" onChange={handleSearch} /> */}
                 <h3>GPS Summary</h3>
                 <TableContainer component={Paper}>
                   <TextField

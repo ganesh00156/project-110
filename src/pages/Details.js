@@ -48,8 +48,6 @@ const Details = () => {
     /* Creating an array of objects. */
     const values = [["Location", "times"]];
 
-    //PUSH VALUE
-    // Object.entries(counts).map(([key, value]) => values.push({ key, value }));
 
     Object.entries(counts).map(([key, value]) => {
       const Stringify = JSON.stringify(key);
