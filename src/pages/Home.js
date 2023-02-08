@@ -32,16 +32,33 @@ export default function DataTableTest() {
   //sorting
   const [sortBy, setSortBy] = useState("");
   const [sortOrder, setSortOrder] = useState(1);
-  //sorting
+
   const { currentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setRows(response.data);
-    });
-  }, []);
+    const getdata = async () => {
+      try {
+        const user = await currentUser.id;
+        if (user) {
+          const response = await axios.get(baseURL);
+          const data = await response.data;
+
+          const match = await data.filter((item) => user === item.uid);
+          setRows(match);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getdata();
+
+    // axios.get(baseURL).then((response) => {
+    //   const rd = response.data.filter((item) => currentUser.id === item.uid);
+    //   setRows(rd);
+    // });
+  }, [currentUser]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -104,6 +121,7 @@ export default function DataTableTest() {
     return 0;
   });
 
+  
   return (
     <>
       {currentUser ? (
@@ -201,7 +219,7 @@ export default function DataTableTest() {
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
                         )
-                        .map((row) => {
+                        .map((row, index) => {
                           const { DeviceId, Device_Type, Timestamp, location } =
                             row;
                           const formattedDate =
@@ -211,7 +229,7 @@ export default function DataTableTest() {
                               hover
                               role="checkbox"
                               tabIndex={-1}
-                              key={row.id}
+                              key={index}
                             >
                               <TableCell>{DeviceId}</TableCell>
                               <TableCell>{Device_Type}</TableCell>

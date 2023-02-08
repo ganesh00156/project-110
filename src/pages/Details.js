@@ -30,7 +30,6 @@ const Details = () => {
       try {
         const res = await axios.get(`http://localhost:8800/api/data/${postId}`);
         setPost(res.data);
-        console.log(res);
       } catch (err) {
         console.log(err);
       }
@@ -59,7 +58,6 @@ const Details = () => {
 
     setCounts(counts);
     setPieData(values);
-    console.log(pieData);
   }, [post]);
 
   return (

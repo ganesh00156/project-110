@@ -5,10 +5,6 @@ export const options = {
 };
 
 const Gpsdata = ({ pieData }) => {
-  // const mapData = values.map((item) => [item.key, item.value]);
-  // data.push(mapData);
-
-  console.log(pieData);
   return (
     <>
       <Chart
